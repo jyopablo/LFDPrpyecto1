@@ -49,7 +49,7 @@ def Titulo(cadena):
             else:
                 cajon2=cajon2+caracter
     titulo.append(cajon2)
-    print(cajon+cajon2)
+
 
 
 def Nombre_seccion(cadena):
@@ -75,7 +75,6 @@ def Nombre_seccion(cadena):
             else:
                 error2="No existe el caracter :"
     seccion.append(cajon)
-    print(cajon2+cajon)
 
 def Opcion_menu(cadena):
     contador=0
@@ -143,7 +142,4 @@ def Opcion_menu(cadena):
     identificador.append(id)
     datos.append(nombre+"    Q"+precio)
     descripcionProducto.append(descripcion)
-    print('identificador = '+id)
-    print('nombre = '+nombre)
-    print('precio = '+precio)
-    print('descripcion = '+descripcion)
+    

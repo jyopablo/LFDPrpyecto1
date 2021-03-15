@@ -1,8 +1,10 @@
 from tkinter import *
 from analizador import *
 from tkinter import filedialog
+from analizar_token import *
 import analizador as analizador
 import analizador_orden as analizador_orden
+import analizar_token as analizar_token
 import html_menu as html_menu
 
 ruta1="Hola"
@@ -52,6 +54,7 @@ def cargar_orden():
         print('No se eligio archivo')
 
 def generar_menu():
+    Validacion_Tokens()
     contador=0
     archivo=open(ruta1,encoding="utf8")
     for linea in archivo.readlines():
@@ -81,5 +84,26 @@ def limite_precio():
         precio=int(input('Limite de presio'))
     else:
         pass
+
+def Validacion_Tokens():
+    try:
+        contador=0
+        archivo=open(ruta1,encoding="utf8")
+        for linea in archivo.readlines():
+            archivo_sin_espacios=linea.replace("  ","")
+            analizar_token.analizar(archivo_sin_espacios,contador)
+            contador +=1
+        archivo.close()
+        print('Datos Cargados')
+    except Exception as e:
+        pass
+
+    for i in tokens:
+        print(i)
+
+    for j in errores:
+        print(j)
+
+
 
 menu()
