@@ -1,9 +1,11 @@
 titulo=[]
 seccion=[]
-identificador=[]
 datos=[]
+total_datos=[]
 descripcionProducto=[]
 cantidad=[]
+precioProducto=[]
+nombreProducto=[]
 cantidadProductos=0
 def analizar(cadena,contador):
     if contador==0:
@@ -138,8 +140,8 @@ def Opcion_menu(cadena):
                 else:
                     descripcion=descripcion+caracter
 
-
-    identificador.append(id)
+    nombreProducto.append(nombre)
+    precioProducto.append(float(precio))
     datos.append(nombre+"    Q"+precio)
+    total_datos.append(nombre+"    Q"+precio+"\n"+descripcion)
     descripcionProducto.append(descripcion)
-    

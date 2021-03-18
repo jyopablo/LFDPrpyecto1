@@ -1,6 +1,12 @@
 import re
 tokens=[]
 errores=[]
+identificador_id=[]
+columnas=[]
+filas=[]
+Total_tokens=[]
+lexema=[]
+No=[]
 contador_filas=0
 cantidad_tokens=0
 cantidad_errores=0
@@ -41,6 +47,11 @@ def Titulo(cadena):
                     paso1=False
                     paso2=True
                     cantidad_tokens += 1
+                    No.append(str(cantidad_tokens))
+                    lexema.append("restaurante")
+                    filas.append(str(contador_filas))
+                    columnas.append(str(contador_columnas))
+                    Total_tokens.append("Palabra Reservada")
                     tokens.append("No = "+str(cantidad_tokens)+", Lexema = restaurante, Fila = "+str(contador_filas)+", Columna = "+str(contador_columnas+1)+", Token = Palabra Reservada")
                     contador_columnas += 1
                 else:
@@ -68,6 +79,11 @@ def Titulo(cadena):
                 cajon2=cajon2+caracter
                 if contador==2:
                     cantidad_tokens += 1
+                    No.append(str(cantidad_tokens))
+                    lexema.append(cajon2)
+                    filas.append(str(contador_filas))
+                    columnas.append(str(contador_columnas))
+                    Total_tokens.append("Cadena")
                     tokens.append("No = "+str(cantidad_tokens)+", Lexema = "+cajon2+", Fila = "+str(contador_filas)+", Columna = "+str(contador_columnas+1)+", Token = Cadena")
                     cajon2=""
                 elif contador==3:
@@ -83,9 +99,6 @@ def Titulo(cadena):
                 cantidad_errores += 1
                 errores.append("No = "+str(cantidad_errores)+", Fila = "+str(contador_filas)+", Columna = "+str(contador_columnas)+", Caracter = ', Descripcion = Caracter no Encontrado")
                 contador += 1
-
-
-
 
 
 def Nombre_seccion(cadena):
@@ -115,8 +128,12 @@ def Nombre_seccion(cadena):
         elif paso2==True:
             if caracter==":" :
                 contador_columnas += 1
+                No.append(str(cantidad_tokens))
+                lexema.append(cajon)
+                filas.append(str(contador_filas))
+                columnas.append(str(contador_columnas))
+                Total_tokens.append("Cadena")
                 tokens.append("No = "+str(cantidad_tokens)+", Lexema = "+cajon+", Fila = "+str(contador_filas)+", Columna = "+str(contador_columnas)+", Token = Cadena")
-                cajon2="Nombre Seccion = "
             else:
                 error2="No existe el caracter :"
 
@@ -152,7 +169,13 @@ def Opcion_menu(cadena):
                 id=id.strip()
                 tamaño_id=len(id)
                 contador_columnas =contador_columnas+tamaño_id
+                No.append(str(cantidad_tokens))
+                lexema.append(id)
+                filas.append(str(contador_filas))
+                columnas.append(str(contador_columnas))
+                Total_tokens.append("Identificador")
                 tokens.append("No = "+str(cantidad_tokens)+", Lexema = "+id+", Fila = "+str(contador_filas)+", Columna = "+str(contador_columnas)+", Token = Identificador")
+                identificador_id.append(id)
             else:
                 id=id+caracter
         elif paso2==True:
@@ -164,6 +187,11 @@ def Opcion_menu(cadena):
                 nombre=nombre.strip()
                 tamaño_nombre=len(nombre)
                 contador_columnas =contador_columnas+tamaño_nombre
+                No.append(str(cantidad_tokens))
+                lexema.append(nombre)
+                filas.append(str(contador_filas))
+                columnas.append(str(contador_columnas))
+                Total_tokens.append("Cadena")
                 tokens.append("No = "+str(cantidad_tokens)+", Lexema = "+nombre+", Fila = "+str(contador_filas)+", Columna = "+str(contador_columnas)+", Token = Cadena")
             else:
                 nombre=nombre+caracter
@@ -176,6 +204,11 @@ def Opcion_menu(cadena):
                 precio=precio.strip()
                 tamaño_precio=len(precio)
                 contador_columnas =contador_columnas+tamaño_precio
+                No.append(str(cantidad_tokens))
+                lexema.append(precio)
+                filas.append(str(contador_filas))
+                columnas.append(str(contador_columnas))
+                Total_tokens.append("Numero")
                 tokens.append("No = "+str(cantidad_tokens)+", Lexema = "+precio+", Fila = "+str(contador_filas)+", Columna = "+str(contador_columnas)+", Token = Numero")
             else:
                 precio=precio+caracter
@@ -187,7 +220,12 @@ def Opcion_menu(cadena):
                 descripcion=descripcion.strip()
                 tamaño_descripcion=len(precio)
                 contador_columnas =contador_columnas+tamaño_descripcion
-                tokens.append("No = "+str(cantidad_tokens)+", Lexema = "+descripcion+", Fila = "+str(contador_filas)+", Columna = "+str(contador_columnas)+", Token = Numero")
+                No.append(str(cantidad_tokens))
+                lexema.append(descripcion)
+                filas.append(str(contador_filas))
+                columnas.append(str(contador_columnas))
+                Total_tokens.append("Cadena")
+                tokens.append("No = "+str(cantidad_tokens)+", Lexema = "+descripcion+", Fila = "+str(contador_filas)+", Columna = "+str(contador_columnas)+", Token = Cadena")
             else:
                 if caracter=="'":
                     contador_columnas += 1
