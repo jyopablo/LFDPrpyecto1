@@ -8,6 +8,7 @@ def crear():
     crear.write("<link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css\" integrity=\"sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh\" crossorigin=\"anonymous\">")
     crear.write("<title>"+titulo[0]+"</title>")
     crear.write("</head>")
+    crear.write("<style>body {background-color: #FFCA33;}</style>")
     crear.write("<body>")
     crear.write("<div class=\"container\"><div class=\"row justify-content-center\"><div class=\"col-4\"><h1>"+titulo[0]+"</h1></div></div>")
     x=len(datos)

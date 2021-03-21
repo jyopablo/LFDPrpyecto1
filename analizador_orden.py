@@ -39,7 +39,10 @@ def DatosPersonales(cadena):
                     if caracter=="%":
                         porcentaje_int=int(porcentaje)
                     else:
-                        porcentaje=porcentaje+caracter
+                        if caracter==" ":
+                            pass
+                        else:
+                            porcentaje=porcentaje+caracter
     nombre_cliente.append(nombre)
     nit_cliente.append(nit)
     direccion_cliente.append(direccion)
@@ -61,10 +64,15 @@ def Pedidos(cadena):
                 paso1=False
                 paso2=True
             else:
-                cantidad=cantidad+caracter
+                if caracter==" ":
+                    pass
+                else:
+                    cantidad=cantidad+caracter
         elif paso2==True:
-            identificador=identificador+caracter
+            if caracter==" ":
+                pass
+            else:
+                identificador=identificador+caracter
 
     cantidad_comprada.append(cantidad_int)
     identificador_comprado.append(identificador)
-    

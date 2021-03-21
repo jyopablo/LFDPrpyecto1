@@ -2,29 +2,32 @@ from tkinter import *
 from analizador import *
 from tkinter import filedialog
 from analizar_token import *
-from analizador_orden import *
 from analizador_orden import*
+from token_factura import*
 import analizador as analizador
 import analizador_orden as analizador_orden
 import analizar_token as analizar_token
 import html_menu as html_menu
 import html_factura as html_factura
 import html_tokens as html_tokens
+import token_factura as token_factura
+import html_token_factura as html_token_factura
 import Graphviz as Graphviz
 
 Factura=0
 numero=0
+numero2=0
 graphviz=0
 factura_lista=[0]
-ruta1="Hola"
-ruta2="Hola"
+ruta1=""
+ruta2=""
 def menu():
     print('Lenguajes Formales de Programacion seccion')
     print('Juan Pablo Gonzalez Leal')
     print('Carne: 201901374')
     while True:
         print('1. Cargar menu')
-        print('2. Cargar o rden')
+        print('2. Cargar orden')
         print('3. Generar menu')
         print('4. Generar factura')
         print('5. Generar árbol')
@@ -32,9 +35,45 @@ def menu():
         opcion=int(input('ELIJA UNA OPCION'))
         if opcion==1:
             cargar_menu()
+            titulo.clear()
+            seccion.clear()
+            datos.clear()
+            total_datos.clear()
+            descripcionProducto.clear()
+            cantidad.clear()
+            precioProducto.clear()
+            nombreProducto.clear()
+            cantidadProductos=0
+
+            tokens.clear()
+            errores.clear()
+            identificador_id.clear()
+            columnas.clear()
+            filas.clear()
+            Total_tokens.clear()
+            lexema.clear()
+            No.clear()
+            contador_filas=0
+            cantidad_tokens=0
+            cantidad_errores=0
 
         elif opcion ==2:
             cargar_orden()
+            nombre_cliente.clear()
+            nit_cliente.clear()
+            direccion_cliente.clear()
+            propina_cliente.clear()
+            propina_clienteInt.clear()
+            cantidad_comprada.clear()
+            identificador_comprado.clear()
+
+            No_factura.clear()
+            Lexema_factura.clear()
+            fila_factura.clear()
+            columna_factura.clear()
+            tokensfactura.clear()
+            cantidadtokens_factura=0
+            contadorfilas_factura=0
 
         elif opcion==3:
             generar_menu()
@@ -78,6 +117,7 @@ def generar_menu():
 
 def generar_factura():
     global Factura
+    Validacion_Tokens_Factura()
     contador=0
     archivo_orden=open(ruta2,encoding="utf8")
     for linea in archivo_orden.readlines():
@@ -93,14 +133,6 @@ def generar_arbol():
     graphviz += 1
     Graphviz.crear(graphviz)
 
-def Limite_Precio():
-    opcion=int(input('Desea poner un limite de precio'))
-    print('1. Si')
-    print('2. No')
-    if opcion==1:
-        limite_precio=int(input('Limite de presio'))
-    else:
-        pass
 
 def Validacion_Tokens():
     global numero
@@ -120,6 +152,20 @@ def Validacion_Tokens():
     html_tokens.crear(numero)
 
 
+def Validacion_Tokens_Factura():
+    global numero2
+    try:
+        contador=0
+        archivo=open(ruta2,encoding="utf8")
+        for linea in archivo.readlines():
+            archivo_sin_espacios=linea.replace("  ","")
+            token_factura.analizar_orden(archivo_sin_espacios,contador)
+            contador +=1
+        archivo.close()
+        print('Datos Cargados')
+    except Exception as e:
+        pass
 
-
+    numero2 += 1
+    html_token_factura.crear(numero2)
 menu()
