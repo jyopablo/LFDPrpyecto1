@@ -1,6 +1,7 @@
 from analizador_orden import*
 from analizador import*
 from analizar_token import*
+import os
 import datetime
 ahora=datetime.datetime.now()
 
@@ -37,4 +38,5 @@ def crear(Factura):
     crear.write("<th scope=\"col\" colspan=\"1\">"+str("{:.2f}".format(TOTAL))+"</th></tr></thead>")
     crear.write("</table></div></div></div></div></body></html>")
     crear.close()
+    os.system("Factura#"+str(Factura)+".html")
     print('archivo creado')

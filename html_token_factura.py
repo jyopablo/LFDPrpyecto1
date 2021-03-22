@@ -1,4 +1,5 @@
 from token_factura import*
+import os
 def crear(Tokens):
     crear=open("TokensFactura#"+str(Tokens)+".html","w")
     crear.write("<html lang=\"es\">")
@@ -10,4 +11,5 @@ def crear(Tokens):
         crear.write("<tr><th scope=\"row\">"+No_factura[i]+"</th><td>"+Lexema_factura[i]+"</td><td>"+fila_factura[i]+"</td><td>"+columna_factura[i]+"</td><td>"+tokensfactura[i]+"</td></tr>")
     crear.write("</table></div></body></html>")
     crear.close()
+    os.system("TokensFactura#"+str(Tokens)+".html")
     print('archivo creado')

@@ -1,4 +1,5 @@
 from analizador import *
+import os
 def crear():
     crear=open(titulo[0].replace("\n","")+".html","w")
     crear.write("<html lang=\"es\">")
@@ -29,4 +30,5 @@ def crear():
     crear.write("</body>")
     crear.write("</html>")
     crear.close()
+    os.system(titulo[0].replace("\n","")+".html")
     print('archivo creado')

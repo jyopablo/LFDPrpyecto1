@@ -1,4 +1,5 @@
 from analizar_token import*
+import os
 def crear(Tokens):
     crear=open("TokensMenu#"+str(Tokens)+".html","w")
     crear.write("<html lang=\"es\">")
@@ -11,4 +12,5 @@ def crear(Tokens):
 
     crear.write("</table></div></body></html>")
     crear.close()
+    os.system("TokensMenu#"+str(Tokens)+".html")
     print('archivo creado')
